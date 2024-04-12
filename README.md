@@ -6,8 +6,8 @@ Onboarding project for Runtime Revolution.
 
 ### Built With
 
-- [![Node][Node.js]][https://nodejs.org/en]
-- [![React][React.js]][https://react.dev/]
+[![Node][Node.js]][Node-url]
+[![React][React.js]][React-url]
 
 ## Getting Started
 
@@ -37,3 +37,8 @@ This section shows how to setup the project.
    ```
 
 <p align="right">(<a href="#readme-top">Back to top</a>)</p>
+
+[Node.js]: https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white
+[Node-url]: https://nodejs.org/en
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://react.dev/
