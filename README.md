@@ -16,22 +16,36 @@ This section shows how to setup the project.
 ### Installation
 
 1. Clone the repository:
+
    ```sh
    git clone https://github.com/pangelinoRR/onboarding.git
    ```
-2. Create an .env file with the following entries:
+
+2. Navigate to the API directory:
+
+   ```sh
+   cd api
+   ```
+
+3. Create an .env file with the following entries:
+
    ```env
     DB_USER=<your-mongodb-user>
     DB_PASSWORD=<your-mongodb-password>
     DB_HOST=<your-mongodb-host>
     DB_PORT=<your-mongodb-port>
     DB_NAME=<your-mongodb-database-name>
+
+    JWT_SECRET=<secret-key-for-jwt-tokens>
    ```
-3. Install the NPM packages:
+
+4. Install the NPM packages:
+
    ```sh
    npm install
    ```
-4. Run the API with the following command:
+
+5. Run the API with the following command:
    ```sh
    npm run dev
    ```

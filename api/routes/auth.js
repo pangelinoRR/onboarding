@@ -10,13 +10,15 @@ const controllers = require("../controllers");
 
 /**
  * Sets up the login route.
- * POST /auth/login
+ *
+ * POST /api/auth/login
  */
 router.post("/login", controllers.auth.login);
 
 /**
  * Sets up the register route.
- * POST /auth/register
+ *
+ * POST /api/auth/register
  */
 router.post("/register", controllers.auth.register);
 

@@ -1,23 +1,19 @@
 /**
- * Initializes the base configuration for the app.
- * Configures the environment variables.
- * Connects to the database.
+ * Gets the application configuration initializer.
  */
-require("./config");
-
-const express = require("express");
-
-const app = express();
+const config = require("./config");
 
 /**
- * Allows express to parse json body data.
+ * Gets and Express application instance.
  */
-app.use(express.json());
+const app = require("express")();
 
 /**
- * Imports all routes.
+ * Initializes all configurations for
+ * the application, including the database connection,
+ * passport, body parsers and router.
  */
-app.use(require("./routes"));
+config.bootstrap(app);
 
 /**
  * Starts the app.

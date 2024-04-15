@@ -11,28 +11,32 @@ const db = {
   name: process.env.DB_NAME,
 };
 
-/**
- * Composes the connection string.
- */
-const connectionString = `mongodb://${db.username}:${db.password}@${db.host}:${db.port}/${db.name}?authSource=admin`;
+const initialize = () => {
+  /**
+   * Composes the connection string.
+   */
+  const connectionString = `mongodb://${db.username}:${db.password}@${db.host}:${db.port}/${db.name}?authSource=admin`;
 
-/**
- * Connects to the database.
- */
-mongoose
-  .connect(connectionString)
-  .then(() => {
-    /**
-     * Connection was successful.
-     */
+  /**
+   * Connects to the database.
+   */
+  mongoose
+    .connect(connectionString)
+    .then(() => {
+      /**
+       * Connection was successful.
+       */
 
-    console.log(`Connected to the database "${db.name}".`);
-  })
-  .catch((error) => {
-    /**
-     * Connection failed.
-     */
+      console.log(`Connected to the database "${db.name}".`);
+    })
+    .catch((error) => {
+      /**
+       * Connection failed.
+       */
 
-    console.error("Failed to connect to the database:");
-    console.error(error);
-  });
+      console.error("Failed to connect to the database:");
+      console.error(error);
+    });
+};
+
+module.exports = initialize;
