@@ -47,7 +47,7 @@ const login = async (req, res) => {
       },
     });
   } catch (error) {
-    return res.status(422).json({
+    return res.json({
       message: "Error during login.",
       error,
     });
@@ -84,9 +84,7 @@ const register = async (req, res) => {
       },
     });
   } catch (error) {
-    return res
-      .status(422)
-      .json({ message: "Could not register the user.", error });
+    return res.json({ message: "Could not register the user.", error });
   }
 };
 

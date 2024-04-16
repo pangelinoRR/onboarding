@@ -7,6 +7,7 @@ const database = require("./database");
 const passport = require("./passport");
 const router = require("./router");
 
+const cors = require("cors");
 const { json } = require("express");
 
 const bootstrap = (app) => {
@@ -24,6 +25,11 @@ const bootstrap = (app) => {
    * Allows express to parse json body data.
    */
   app.use(json());
+
+  /**
+   * Allows external requests.
+   */
+  app.use(cors());
 
   /**
    * Registers all routes.
