@@ -1,10 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
-import MainLayout from "../layouts/Main/MainLayout";
-import HomePage from "../pages/Home/HomePage";
+import MainLayout from "../layouts/App/AppLayout";
+import HomePage from "../pages/App/Home/HomePage";
 import AuthLayout from "../layouts/Auth/AuthLayout";
 import LoginPage from "../pages/Auth/Login/LoginPage";
 import RegisterPage from "../pages/Auth/Register/RegisterPage";
 import AuthenticatedRoute from "./AuthenticatedRoute";
+import GuestRoute from "./GuestRoute";
 
 /**
  * Router object with all defined routes.
@@ -12,11 +13,11 @@ import AuthenticatedRoute from "./AuthenticatedRoute";
 const router = createBrowserRouter([
   // Main App Routes
   {
-    element: <MainLayout />,
+    element: <AuthenticatedRoute />,
+    // Children of this route require an authenticated user.
     children: [
-      // Children of this route require an authenticated user.
       {
-        element: <AuthenticatedRoute />,
+        element: <MainLayout />,
         children: [
           {
             path: "/",
@@ -28,15 +29,21 @@ const router = createBrowserRouter([
   },
   // Auth Routes
   {
-    element: <AuthLayout />,
+    element: <GuestRoute />,
+    // Children of this route require the user to NOT be authenticated.
     children: [
       {
-        path: "/auth/login",
-        element: <LoginPage />,
-      },
-      {
-        path: "/auth/register",
-        element: <RegisterPage />,
+        element: <AuthLayout />,
+        children: [
+          {
+            path: "/auth/login",
+            element: <LoginPage />,
+          },
+          {
+            path: "/auth/register",
+            element: <RegisterPage />,
+          },
+        ],
       },
     ],
   },

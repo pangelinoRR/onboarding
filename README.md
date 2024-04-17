@@ -46,6 +46,33 @@ This section shows how to setup the project.
    ```
 
 5. Run the API with the following command:
+
+   ```sh
+   npm run dev
+   ```
+
+6. In another terminal tab, navigate to the React app directory:
+
+   ```sh
+   cd app
+   ```
+
+7. Create an .env file with the following entries:
+
+   ```env
+    VITE_API_URL=<your-api-base-url>
+   ```
+
+   The api base url should look something like: http://localhost:3000/api
+
+8. Next, install the NPM packages:
+
+   ```sh
+   npm install
+   ```
+
+9. Finally, run the React app with the following command:
+
    ```sh
    npm run dev
    ```

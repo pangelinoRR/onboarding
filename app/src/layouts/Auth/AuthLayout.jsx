@@ -6,6 +6,7 @@ const AuthLayout = () => {
     <div className={classes.wrapper}>
       <div className={classes.formBox}>
         <h1>Onboarding App</h1>
+
         <Outlet />
       </div>
     </div>

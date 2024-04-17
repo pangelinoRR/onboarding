@@ -9,7 +9,6 @@ import classes from "./LoginPage.module.css";
 const LoginPage = () => {
   const navigate = useNavigate();
   const { setToken } = useToken();
-
   const { control, handleSubmit } = useForm({
     defaultValues: {
       email: "",
@@ -17,6 +16,11 @@ const LoginPage = () => {
     },
   });
 
+  /**
+   * Handler for when the form is submitted.
+   * Sends the request to the API Login route
+   * and sets a token coming from the response.
+   */
   const onSubmit = async (data) => {
     try {
       const response = await axiosBasic.post(ROUTES.AUTH.LOGIN, data);
@@ -33,6 +37,7 @@ const LoginPage = () => {
     <form className={classes.loginForm} onSubmit={handleSubmit(onSubmit)}>
       <h3>Login</h3>
 
+      {/* Email Input */}
       <Controller
         name="email"
         control={control}
@@ -51,6 +56,7 @@ const LoginPage = () => {
         )}
       />
 
+      {/* Password Input */}
       <Controller
         name="password"
         control={control}
@@ -69,10 +75,12 @@ const LoginPage = () => {
         )}
       />
 
+      {/* Submit Button */}
       <Button type="submit" variant="contained" fullWidth>
         Login
       </Button>
 
+      {/* Link to Register Page */}
       <Link
         to="/auth/register"
         fontSize={12}
