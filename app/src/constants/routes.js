@@ -1,5 +1,5 @@
 /**
- * Object with all the API urls.
+ * Constant with all the API urls.
  */
 export const ROUTES = {
   AUTH: {

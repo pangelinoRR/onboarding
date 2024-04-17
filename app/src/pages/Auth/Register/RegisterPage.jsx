@@ -1,8 +1,8 @@
 import { TextField, Link, Button } from "@mui/material";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useForm, Controller } from "react-hook-form";
-import { axiosBasic } from "../../../services/axios";
-import { ROUTES } from "../../../services/api/routes";
+import axios from "../../../services/axios";
+import { ROUTES } from "../../../constants/routes";
 import useToken from "../../../hooks/useToken";
 import classes from "./RegisterPage.module.css";
 
@@ -24,7 +24,7 @@ const RegisterPage = () => {
    */
   const onSubmit = async (data) => {
     try {
-      const response = await axiosBasic.post(ROUTES.AUTH.REGISTER, data);
+      const response = await axios.post(ROUTES.AUTH.REGISTER, data);
 
       setToken(response.data.data.token);
 

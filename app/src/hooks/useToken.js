@@ -27,8 +27,18 @@ export default function useToken() {
     setToken(userToken.token);
   };
 
+  /**
+   * Logs the user out, deleting all references to
+   * its token.
+   */
+  const logout = () => {
+    localStorage.removeItem("token");
+    setToken(null);
+  };
+
   return {
     token,
     setToken: saveToken,
+    logout,
   };
 }

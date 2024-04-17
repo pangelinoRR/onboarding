@@ -6,6 +6,7 @@ import LoginPage from "../pages/Auth/Login/LoginPage";
 import RegisterPage from "../pages/Auth/Register/RegisterPage";
 import AuthenticatedRoute from "./AuthenticatedRoute";
 import GuestRoute from "./GuestRoute";
+import Logout from "../pages/Auth/Logout/Logout";
 
 /**
  * Router object with all defined routes.
@@ -25,9 +26,14 @@ const router = createBrowserRouter([
           },
         ],
       },
+      // Logout Route
+      {
+        path: "/auth/logout",
+        element: <Logout />,
+      },
     ],
   },
-  // Auth Routes
+  // Auth Routes (except Logout)
   {
     element: <GuestRoute />,
     // Children of this route require the user to NOT be authenticated.
