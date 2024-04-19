@@ -9,6 +9,10 @@ const instance = axios.create({
   },
 });
 
+/**
+ * Add the Bearer token if it exists
+ * in the localStorage.
+ */
 instance.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
 
@@ -18,5 +22,23 @@ instance.interceptors.request.use((config) => {
 
   return config;
 });
+
+/**
+ * Redirect to Login page in case of
+ * getting a 401 status on a API call.
+ */
+instance.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const status = error.response ? error.response.status : null;
+
+    if (status === 401) {
+      localStorage.removeItem("token");
+      window.location = "/auth/login";
+    }
+
+    return Promise.reject(error);
+  }
+);
 
 export default instance;

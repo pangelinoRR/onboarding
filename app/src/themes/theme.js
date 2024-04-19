@@ -8,6 +8,9 @@ const theme = createTheme({
     primary: {
       main: colors.amber[500],
     },
+    error: {
+      main: "#EF4444",
+    },
   },
 });
 

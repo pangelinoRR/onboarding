@@ -6,14 +6,14 @@ const jwt = require("../utils/jwt");
  * Handler for the login route.
  */
 const login = async (req, res) => {
-  try {
-    const user = await User.findOne({ email: req.body.email });
+  const user = await User.findOne({ email: req.body.email });
 
+  try {
     /**
      * No user found with the email provided in the body.
      */
     if (!user) {
-      res.status(401).json({ message: "No user found." });
+      return res.status(404).json({ message: "No user found." });
     }
 
     /**
@@ -30,7 +30,7 @@ const login = async (req, res) => {
      * Return Unauthorized response.
      */
     if (!isPasswordValid) {
-      res
+      return res
         .status(401)
         .json({ message: "Credentials do not match. Wrong password." });
     }
@@ -47,7 +47,7 @@ const login = async (req, res) => {
       },
     });
   } catch (error) {
-    return res.json({
+    return res.status(422).json({
       message: "Error during login.",
       error,
     });
@@ -76,7 +76,7 @@ const register = async (req, res) => {
     /**
      * Respond with the user data and a new token.
      */
-    return res.status(201).json({
+    return res.json({
       message: "User created successfully",
       data: {
         user: result,

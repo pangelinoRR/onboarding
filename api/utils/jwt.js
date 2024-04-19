@@ -6,11 +6,11 @@ const jwt = require("jsonwebtoken");
 const issue = (user) => {
   const payload = {
     sub: user?._id,
-    iat: Date.now(),
+    iat: new Date().getTime() / 1000,
   };
 
   const token = jwt.sign(payload, process.env.JWT_SECRET, {
-    expiresIn: "1d", // Expires in 1 day
+    expiresIn: "2m",
   });
 
   return token;
